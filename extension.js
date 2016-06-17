@@ -19,10 +19,13 @@ function _getKey(){
 }
 
 function _setKey(arr){
+      let result;
       if(arr == [])
-        GLib.spawn_command_line_sync('gsettings set org.gnome.desktop.input-sources xkb-options ' +'"' +  '[]' + '"');
+        result = GLib.spawn_command_line_sync('gsettings set org.gnome.desktop.input-sources xkb-options ' +'"' +  '[]' + '"');
       else
-        GLib.spawn_command_line_sync('gsettings set org.gnome.desktop.input-sources xkb-options ' +'"' +  '[' +  arr.toString()+']' + '"');
+        result = GLib.spawn_command_line_sync('gsettings set org.gnome.desktop.input-sources xkb-options ' +'"' +  '[' +  arr.toString()+']' + '"');
+
+      return result[0];
 
 }
 function _getXKBOptions(){
@@ -49,11 +52,21 @@ function _toggle(){
 }
 
 function _removeMap(arr){
-      _setKey(arr);
+      let result;
+      result = _setKey(arr);
+      if(result)
+        Main.notify('mapping removed');
+      else
+        Main.notify('There was a problem when remove mapping try again later');
 }
 function _mapCaptoEscape(arr){
       arr.push("'caps:escape'");
-      _setKey(arr);
+      result = _setKey(arr);
+      if(result)
+        Main.notify('CapsLock mapped to Escp');
+      else
+        Main.notify('There was a problem when mapping try again later');
+
 }
 
 function init() {
