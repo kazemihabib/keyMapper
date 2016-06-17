@@ -1,0 +1,9 @@
+
+Gnome extension that Maps and UnMaps CapsLock to Esc by just toggling a button
+
+To install:
+
+    Create a directory in ~/.local/share/gnome-shell/extensions/ and name it keyMapper@kazemihabib1996.gmail.com
+    Copy all files in the repository to the above directory (~/.local/share/gnome-shell/extensions/keyMapper@kazemihabib1996.gmail.com)
+    Restart Gnome-shell. (ALT+F2, r, Enter)
+		If this didn't work open https://extensions.gnome.org/local/ in your browser and enable(turn on) the extension.
